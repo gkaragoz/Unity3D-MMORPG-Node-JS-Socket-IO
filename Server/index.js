@@ -31,7 +31,7 @@ io.on("connection", function(socket){
 		socket.broadcast.emit("USER_CONNECTED", currentUser);
 	});
 	
-	socket.on("MOVE", function(data)){
+	socket.on("MOVE", function(data){
 		currentUser.position = data.position;
 		socket.emit("MOVE", currentUser);
 		socket.broadcast.emit("MOVE", currentUser);
@@ -42,7 +42,7 @@ io.on("connection", function(socket){
 		socket.broadcast.emit("USER_DISCONNECTED", currentUser);
 		for (var i=0; i<clients.length; i++){
 			if(clients[i].name == currentUser.name){
-				console.log("User " + clients[i].name + " disconnected.";
+				console.log("User " + clients[i].name + " disconnected.");
 				clients.splice[i,1];
 			}
 		};
