@@ -3,6 +3,7 @@ Library/
 Builds/
 VSCode/
 node_modules/
+ProjectSettings/
 *.sln
 *.vscode
 *.vs
