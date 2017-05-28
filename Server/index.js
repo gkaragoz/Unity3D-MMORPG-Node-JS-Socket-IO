@@ -16,11 +16,13 @@ io.on("connection", function(socket){
 		for(var i=0; i<clients.length; i++){
 			socket.emit("USER_CONNECTED", { name:clients[i].name, position:clients[i].position });
 			
-			console.log("User name " + cllients[i].name + " is connected.");
+			console.log("User name " + clients[i].name + " is connected.");
 		}
 	});
 	
 	socket.on("PLAY", function(data){
+		console.log(data);
+		
 		currentUser = {
 			name: data.name,
 			position: data.position
