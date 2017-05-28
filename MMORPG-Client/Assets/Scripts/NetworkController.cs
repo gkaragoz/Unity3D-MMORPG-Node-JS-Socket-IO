@@ -7,6 +7,11 @@ public class NetworkController : MonoBehaviour {
 
     public SocketIOComponent socket;
 
+    void Awake()
+    {
+        enabled = false;
+    }
+
 	void Start () {
         StartCoroutine(ConnectToServer());
         socket.On("USER_CONNECTED", OnUserConnected);
@@ -22,8 +27,8 @@ public class NetworkController : MonoBehaviour {
         yield return new WaitForSeconds(1f);
 
         Dictionary<string, string> data = new Dictionary<string, string>();
-        data["name"] = "Ali Osman";
-        Vector3 position = new Vector3(0, 0, 0);
+        data["name"] = GameController._instance.player.PlayerName;
+        Vector3 position = GameController._instance.player.transform.position;
         data["position"] = position.x + "," + position.y + "," + position.z;
         socket.Emit("PLAY", new JSONObject(data));
     }

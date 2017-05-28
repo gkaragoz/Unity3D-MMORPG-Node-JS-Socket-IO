@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour {
     void Login()
     {
         string name = NameInputField.text;
-        Debug.Log(name);
+        GameController._instance.player.PlayerName = name;
+        GameController._instance.network.enabled = true;
     }
 }
